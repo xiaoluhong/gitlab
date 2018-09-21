@@ -25,6 +25,8 @@ questions:
 - variable: node.PortHttp
   #default: "1080"
   type: int
+  min: 30000
+  max: 32767
   required: true
   label: Gitlab WebUI Port(http)
   #group: "Gitlab Settings"
