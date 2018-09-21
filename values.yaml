@@ -42,6 +42,12 @@ resources: {}
   #  cpu: 100m
   #  memory: 128Mi
 
+node:
+  PortHttps: 443
+  PortHttp: 80
+  PortSSH: 22
+
+
 nodeSelector: {}
 
 tolerations: []

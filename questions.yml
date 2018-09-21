@@ -22,21 +22,21 @@ questions:
   required: true
   group: "Gitlab Settings"
   description: "e.g., http://10.44.219.84"
-- variable: nodePortHttp
+- variable: node.PortHttp
   #default: "1080"
   type: int
   required: true
   label: Gitlab WebUI Port(http)
   #group: "Gitlab Settings"
   description: "e.g., 1080"
-- variable: nodePortHttps
+- variable: node.PortHttps
   #default: "4443"
   type: int
   required: true
   label: Gitlab WebUI Port(https)
   #group: "Gitlab Settings"
   description: "e.g., 4443"
-- variable: nodePortSSH
+- variable: node.PortSSH
   #default: "22"
   type: int
   required: true
