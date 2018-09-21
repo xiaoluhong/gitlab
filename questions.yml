@@ -27,14 +27,14 @@ questions:
   type: int
   required: true
   label: Gitlab WebUI Port(http)
-  group: "Gitlab Settings"
+  #group: "Gitlab Settings"
   description: "e.g., 1080"
 - variable: nodePortHttps
   #default: "4443"
   type: int
   required: true
   label: Gitlab WebUI Port(https)
-  group: "Gitlab Settings"
+  #group: "Gitlab Settings"
   description: "e.g., 4443"
 - variable: nodePortSSH
   #default: "22"
