@@ -1,0 +1,53 @@
+categories:
+- CI/CD
+questions:
+- variable: image
+  default: "gitlab/gitlab-ce"
+  type: string
+  label: Image Name
+  required: true
+  description: "Docker image name"
+  group: "Container Images"  
+- variable: imageTag
+  default: "11.2.3-ce.0"  
+  type: string
+  label: Image Tag
+  required: true
+  description: "Docker image tag"
+  group: "Container Images"  
+- variable: externalUrl
+  default: ""  
+  type: string
+  label: Gitlab External URL
+  required: true
+  group: "Gitlab Settings"
+  description: "e.g., http://10.44.219.84"
+- variable: nodePortHttp
+  #default: "1080"
+  type: int
+  required: true
+  label: Gitlab WebUI Port(http)
+  group: "Gitlab Settings"
+  description: "e.g., 1080"
+- variable: nodePortHttps
+  #default: "4443"
+  type: int
+  required: true
+  label: Gitlab WebUI Port(https)
+  group: "Gitlab Settings"
+  description: "e.g., 4443"
+- variable: nodePortSSH
+  #default: "22"
+  type: int
+  required: true
+  label: Gitlab SSH Port
+  group: "Gitlab Settings"
+  description: "e.g., 2222"
+- variable: configData
+  default: ""  
+  type: string
+  label: Gitlab Config(gitlab.rb)
+  required: false
+  group: "Gitlab Config Settings"
+  description: "e.g., gitlab_rails['time_zone'] = 'UTC'; gitlab_rails['initial_root_password'] = 'password'"
+  

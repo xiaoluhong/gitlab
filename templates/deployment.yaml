@@ -1,0 +1,57 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gitlab
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gitlab
+    spec:
+      hostname: gitlab
+      #nodeSelector:      #商业部署指定node节点
+        #gitlab: always
+      containers:
+      - name: gitlab
+        imagePullPolicy: Always
+        image: {{ .Values.image }}:{{ .Values.imageTag }}
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 443
+          name: https
+        - containerPort: 22
+          name: ssh
+        env:
+        - name: external_url   
+          value: "{{ .Values.externalUrl }}"
+        # - name: GITLAB_OMNIBUS_CONFIG
+          # value: "external_url '{{ .Values.externalUrl }}'; gitlab_rails['lfs_enabled'] = true;"
+        - name: GITLAB_OMNIBUS_CONFIG
+          valueFrom:
+            secretKeyRef:
+              name: gitlab
+              key: gitlab_omnibus_config
+        volumeMounts:
+        - name: config
+          mountPath: /etc/gitlab       
+        - name: log
+          mountPath: /var/log/gitlab
+        - name: data
+          mountPath: /var/opt/gitlab      
+      volumes:
+      - name: config
+        hostPath:
+          path: /srv/gitlab/config    #配置文件gitlab.rb可以在部署前预埋在这个目录
+      - name: log
+        hostPath:
+          path: /srv/gitlab/logs
+      - name: data
+        hostPath:
+          path: /srv/gitlab/data
+
+
+          
